@@ -13,7 +13,7 @@ if (($wlanstatus==1)) || (($lanstatus==1))
   echo -n "External IP: "
   dig +short myip.opendns.com @resolver1.opendns.com
   echo -n "Internal IP: "
-  ifconfig | grep -E -o "inet addr:192.168.[0-9].[0-9]*" | grep -E -o "192.168.[0-9].[0-9]*"
+  hostname -I
 else
  echo "No network connection..."
 fi
