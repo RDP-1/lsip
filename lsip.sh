@@ -1,14 +1,7 @@
 #!/bin/bash
-lanstatus=`cat /sys/class/net/eth0/carrier`
+ping -i 0.2 -c 1 google.com > /dev/null 2>&1
 
-if [[ `cat /sys/class/net/wlan0/carrier 2>/dev/null` == 1 ]]
- then
-  wlanstatus=1
- else
-  wlanstatus=0
-fi
-
-if (($wlanstatus==1)) || (($lanstatus==1))
+if (($?==0))
  then
   echo -n "External IP: "
   dig +short myip.opendns.com @resolver1.opendns.com
